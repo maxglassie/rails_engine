@@ -4,7 +4,7 @@ describe "payments API" do
   it "sends a list of payments" do
       Fabricate.times(3, :payment)
 
-      get '/api/v1/payments'
+      get '/api/v1/transactions'
 
       expect(response).to be_success
 
@@ -13,10 +13,10 @@ describe "payments API" do
       expect(payments.count).to eq(3)
   end
 
-  xit "can get one payment by id" do
+  it "can get one payment by id" do
     id = Fabricate(:payment).id
 
-    get "/api/v1/payments/#{id}"
+    get "/api/v1/transactions/#{id}"
 
     Payment = JSON.parse(response.body)
 
@@ -25,9 +25,9 @@ describe "payments API" do
   end
 
   xit "can create a new Payment" do
-    payment_params = { name: "We The Best" }
+    payment_params = { }
 
-    post "/api/v1/payments", params: {payment: Payment_params}
+    post "/api/v1/transactions", params: {payment: payment_params}
     payment = Payment.last
 
     assert_response :success
@@ -40,7 +40,7 @@ describe "payments API" do
     previous_name = Payment.last.name
     payment_params = { name: "We The Best" }
 
-    put "/api/v1/payments/#{id}", params: { payment: payment_params}
+    put "/api/v1/transactions/#{id}", params: { payment: payment_params}
     payment = Payment.find_by(id: id)
 
 
@@ -54,7 +54,7 @@ describe "payments API" do
 
       expect(Payment.count).to eq(1)
 
-      expect{delete "/api/v1/payments/#{payment.id}"}.to change(Payment, :count).by(-1)
+      expect{delete "/api/v1/transactions/#{payment.id}"}.to change(Payment, :count).by(-1)
 
       expect(response).to be_success
       expect(Payment.count).to eq(0)
