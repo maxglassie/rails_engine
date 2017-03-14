@@ -4,7 +4,7 @@ describe "Items API" do
   it "creates a list of items" do
     Fabricate.times(5, :item)
 
-    get '/api/v1/items'
+    get '/api/v1/items.json'
 
     expect(response).to be_success
 
@@ -16,7 +16,7 @@ describe "Items API" do
   it "can get one item by its id" do
     id = Fabricate(:item).id
 
-    get "/api/v1/items/#{id}"
+    get "/api/v1/items/#{id}.json"
 
     item = JSON.parse(response.body)
 

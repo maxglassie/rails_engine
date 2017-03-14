@@ -4,7 +4,7 @@ describe "Invoices API" do
   it "creates a list of invoices" do
     Fabricate.times(3, :invoice)
 
-    get '/api/v1/invoices'
+    get '/api/v1/invoices.json'
 
     expect(response).to be_success
 
@@ -16,7 +16,7 @@ describe "Invoices API" do
   it "can get one invoice by its id" do
     id = Fabricate(:invoice).id
 
-    get "/api/v1/invoices/#{id}"
+    get "/api/v1/invoices/#{id}.json"
 
     invoice = JSON.parse(response.body)
 
