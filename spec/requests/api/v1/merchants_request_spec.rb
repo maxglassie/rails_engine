@@ -72,4 +72,28 @@ describe "merchants API" do
 
     expect(merchant["name"]).to eq("#{data_merchant.name}")
   end
+
+  xit "returns the top merchants ranked by total revenue" do
+    
+    data_merchant = Fabricate(:merchant)
+
+    get "/api/v1/merchants/most_revenue?quantity=2"
+
+    expect(response).to be_success
+
+    merchants = JSON.parse(response.body)
+
+#top ten merchants by total revenue
+# select m.name, sum(it.quantity * unit_price) as revenue
+# from merchants m
+# inner join invoices i on m.id = i.merchant_id
+# inner join invoice_items it on i.id = it.invoice_id
+# group by m.name
+# order by revenue desc
+# limit 10;
+
+# in ActiveRecord
+# Merchant.joins(:transactions, :invoice_items).where(transactions: {result: "success"}).group(:id).order("sum(quantity * unit_price) DESC").limit(5)
+  end
+
 end
