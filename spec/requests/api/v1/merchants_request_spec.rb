@@ -50,14 +50,26 @@ describe "merchants API" do
   end
 
   it "can destroy a merchant" do
-      merchant = Fabricate(:merchant)
+    merchant = Fabricate(:merchant)
 
-      expect(Merchant.count).to eq(1)
+    expect(Merchant.count).to eq(1)
 
-      expect{delete "/api/v1/merchants/#{merchant.id}"}.to change(Merchant, :count).by(-1)
+    expect{delete "/api/v1/merchants/#{merchant.id}"}.to change(Merchant, :count).by(-1)
 
-      expect(response).to be_success
-      expect(Merchant.count).to eq(0)
-      expect{Merchant.find(merchant.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    expect(response).to be_success
+    expect(Merchant.count).to eq(0)
+    expect{Merchant.find(merchant.id)}.to raise_error(ActiveRecord::RecordNotFound)
+  end
+
+  it "finds a merchant by its name" do
+    data_merchant = Fabricate(:merchant)
+
+    get "/api/v1/merchants/find?name=#{data_merchant.name}"
+
+    expect(response).to be_success
+
+    merchant = JSON.parse(response.body)
+
+    expect(merchant["name"]).to eq("#{data_merchant.name}")
   end
 end
