@@ -5,8 +5,10 @@ Rails.application.routes.draw do
         get '/find', to: 'search#show'
       end
       resources :merchants, except: [:new, :edit]
-
       resources :invoices, only: [:index]
+
+      get '/ap/v1/transactions/find', to: 'search#show'
+
       resources :payments, path: 'transactions', only: [:index, :show, :create]
       resources :customers, only: [:index, :show]
       resources :invoices, only: [:index, :show]
