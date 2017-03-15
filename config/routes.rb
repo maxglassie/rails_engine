@@ -5,18 +5,33 @@ Rails.application.routes.draw do
         get '/find', to: 'search#show'
       end
       resources :merchants, except: [:new, :edit]
-      resources :invoices, only: [:index]
 
       resources :payments, path: 'transactions', only: [:index, :show, :create] do
           collection do
             get '/find', to: 'payments/search#show', as: 'transactions'
           end
         end
-    
+
+      namespace :customers do
+        get '/find', to: 'search#show'
+      end
       resources :customers, only: [:index, :show]
+
+      namespace :invoices do
+        get '/find', to: 'search#show'
+      end
       resources :invoices, only: [:index, :show]
+
+      namespace :items do
+        get '/find', to: 'search#show'
+      end
       resources :items, only: [:index, :show]
+
+      namespace :invoice_items do
+        get '/find', to: 'search#show'
+      end
       resources :invoice_items, only: [:index, :show]
-    end
+
+      end
     end
   end
