@@ -61,7 +61,7 @@ describe "merchants API" do
     expect{Merchant.find(merchant.id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
 
-  it "finds a merchant by its name" do
+  xit "finds a merchant by its name" do
     data_merchant = Fabricate(:merchant)
 
     get "/api/v1/merchants/find?name=#{data_merchant.name}"
@@ -71,5 +71,17 @@ describe "merchants API" do
     merchant = JSON.parse(response.body)
 
     expect(merchant["name"]).to eq("#{data_merchant.name}")
+  end
+
+    it "finds a merchant by its name, case insensitive" do
+    data_merchant = Fabricate(:merchant, name: "We The Best")
+
+    get "/api/v1/merchants/find?name=we the best"
+
+    expect(response).to be_success
+
+    merchant = JSON.parse(response.body)
+
+    expect(merchant["name"]).to eq("We The Best")
   end
 end
