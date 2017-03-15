@@ -6,6 +6,12 @@ Rails.application.routes.draw do
       end
       resources :merchants, except: [:new, :edit]
 
+      resources :payments, path: 'transactions', only: [:index, :show, :create] do
+          collection do
+            get '/find', to: 'payments/search#show', as: 'transactions'
+          end
+        end
+
       namespace :customers do
         get '/find', to: 'search#show'
       end
@@ -25,8 +31,6 @@ Rails.application.routes.draw do
         get '/find', to: 'search#show'
       end
       resources :invoice_items, only: [:index, :show]
-
-      resources :payments, path: 'transactions', only: [:index, :show, :create]
 
       end
     end
