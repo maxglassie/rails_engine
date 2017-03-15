@@ -23,4 +23,64 @@ describe "customers API" do
     expect(response).to be_success
     expect(customer["id"]).to eq(id)
   end
+
+  it "can search a customer by its id" do
+    data_customer = Fabricate(:customer)
+
+    get "/api/v1/customers/find?id=#{data_customer.id}"
+
+    expect(response).to be_success
+
+    customer = JSON.parse(response.body)
+
+    expect(customer["id"]).to eq(data_customer.id)
+  end
+
+  it "can search a customer by its first name" do
+    data_customer = Fabricate(:customer)
+
+    get "/api/v1/customers/find?first_name=#{data_customer.first_name}"
+
+    expect(response).to be_success
+
+    customer = JSON.parse(response.body)
+
+    expect(customer["first_name"]).to eq(data_customer.first_name)
+  end
+
+  it "can search a customer by its last name" do
+    data_customer = Fabricate(:customer)
+
+    get "/api/v1/customers/find?last_name=#{data_customer.last_name}"
+
+    expect(response).to be_success
+
+    customer = JSON.parse(response.body)
+
+    expect(customer["last_name"]).to eq(data_customer.last_name)
+  end
+
+  xit "can search a customer by the date it was created at" do
+    data_customer = Fabricate(:customer)
+
+    get "/api/v1/customers/find?created_at=#{data_customer.created_at}"
+
+    expect(response).to be_success
+
+    customer = JSON.parse(response.body)
+
+    expect(customer["created_at"]).to eq(data_customer.created_at)
+  end
+
+  xit "can search a customer by the date it was updated at" do
+    data_customer = Fabricate(:customer)
+
+    get "/api/v1/customers/find?updated_at=#{data_customer.updated_at}"
+
+    expect(response).to be_success
+
+    customer = JSON.parse(response.body)
+
+    expect(customer["updated_at"]).to eq(data_customer.updated_at)
+  end
 end

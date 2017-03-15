@@ -23,4 +23,77 @@ describe "Invoices API" do
     expect(response).to be_success
     expect(invoice["id"]).to eq(id)
   end
+
+  it "can search an invoice by its id" do
+    data_invoice = Fabricate(:invoice)
+
+    get "/api/v1/invoices/find?id=#{data_invoice.id}"
+
+    expect(response).to be_success
+
+    invoice = JSON.parse(response.body)
+
+    expect(invoice["id"]).to eq(data_invoice.id)
+  end
+
+  it "can search an invoice by a customer id" do
+    data_invoice = Fabricate(:invoice)
+
+    get "/api/v1/invoices/find?customer_id#{data_invoice.customer_id}"
+
+    expect(response).to be_success
+
+    invoice = JSON.parse(response.body)
+
+    expect(invoice["customer_id"]).to eq(data_invoice.customer_id)
+  end
+
+  it "can search an invoice by a merchant id" do
+    data_invoice = Fabricate(:invoice)
+
+    get "/api/v1/invoices/find?merchant_id#{data_invoice.merchant_id}"
+
+    expect(response).to be_success
+
+    invoice = JSON.parse(response.body)
+
+    expect(invoice["merchant_id"]).to eq(data_invoice.merchant_id)
+  end
+
+  it "can search an invoice by provided status" do
+    data_invoice = Fabricate(:invoice)
+
+    get "/api/v1/invoices/find?status#{data_invoice.status}"
+
+    expect(response).to be_success
+
+    invoice = JSON.parse(response.body)
+
+    expect(invoice["status"]).to eq(data_invoice.status)
+  end
+
+  xit "can search an invoice by the date it was created at" do
+    data_invoice = Fabricate(:invoice)
+
+    get "/api/v1/invoices/find?created_at=#{data_invoice.created_at}"
+
+    expect(response).to be_success
+
+    invoice = JSON.parse(response.body)
+
+    expect(invoice["created_at"]).to eq(data_invoice.created_at)
+  end
+
+  xit "can search an invoice by the date it was updated at" do
+    data_invoice = Fabricate(:invoice)
+
+    get "/api/v1/invoices/find?updated_at=#{data_invoice.updated_at}"
+
+    expect(response).to be_success
+
+    invoice = JSON.parse(response.body)
+
+    expect(invoice["updated_at"]).to eq(data_invoice.updated_at)
+  end
+
 end
