@@ -114,5 +114,6 @@ describe "customers API" do
     get '/api/v1/customers/random'
 
     expect(response).to be_success
+
   end
 end
