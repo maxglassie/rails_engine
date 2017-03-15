@@ -4,6 +4,7 @@ RSpec.describe InvoiceItem, type: :model do
   context "relationships" do
     it { should belong_to(:item)    }
     it { should belong_to(:invoice) }
+    it { should have_one(:payment) }
   end
   context "validations" do
     it { should validate_presence_of(:item_id)    }
