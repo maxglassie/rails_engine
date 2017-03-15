@@ -7,9 +7,11 @@ Rails.application.routes.draw do
       resources :merchants, except: [:new, :edit]
       resources :invoices, only: [:index]
 
-      get '/ap/v1/transactions/find', to: 'search#show'
-
-      resources :payments, path: 'transactions', only: [:index, :show, :create]
+      resources :payments, path: 'transactions', only: [:index, :show, :create] do
+          collection do
+            get '/find', to: 'payments/search#show', as: 'transactions'
+          end
+        end
       resources :customers, only: [:index, :show]
       resources :invoices, only: [:index, :show]
       resources :items, only: [:index, :show]
