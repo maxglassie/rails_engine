@@ -12,6 +12,7 @@ Rails.application.routes.draw do
             get '/find', to: 'payments/search#show', as: 'transactions'
           end
         end
+    
       resources :customers, only: [:index, :show]
       resources :invoices, only: [:index, :show]
       resources :items, only: [:index, :show]
