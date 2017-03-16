@@ -52,7 +52,7 @@ describe "Items API" do
     expect(item["name"]).to eq(data_item.name)
   end
 
-  xit "can search an item by its description" do
+  it "can search an item by its description" do
     data_item = Fabricate(:item)
 
     get "/api/v1/items/find?description=#{data_item.description}"
@@ -60,7 +60,7 @@ describe "Items API" do
     expect(response).to be_success
 
     item = JSON.parse(response.body)
-
+    
     expect(response).to be_success
     expect(item["description"]).to eq(data_item.description)
   end

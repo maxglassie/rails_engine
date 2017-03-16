@@ -67,11 +67,12 @@ describe "payments API" do
   end
 
   xit "can find all payments by providing a date" do
-    data_payment_1, data_payment_2 = Fabricate.times(2, :payment, credit_card_expiration_date: "2017-03-14")
+    data_payment_1, data_payment_2 = Fabricate.times(2, :payment, credit_card_expiration_date: "2017-03-14 00:00:00")
 
     get "/api/v1/transactions/find_all?credit_card_expiration_date=#{data_payment_1.credit_card_expiration_date}"
 
     expect(response).to be_success
+    expect(response).to have_http_status(200)
 
     transaction_1 = JSON.parse(response.body).first
 

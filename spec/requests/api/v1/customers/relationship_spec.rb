@@ -20,15 +20,18 @@ describe "Customer Relationship Endpoint" do
 
   it "returns a collection of associated payments for an specific customer" do
     customer = Fabricate(:customer)
-    invoice = Fabricate(:invoice, customer: customer)
-    payments = Fabricate.times(5, :payment, invoice: invoice )
+    invoice_1 = Fabricate(:invoice, customer: customer)
+    invoice_2 = Fabricate(:invoice, customer: customer)
+    payment_1 = Fabricate(:payment, invoice: invoice_1)
+    payment_2 = Fabricate(:payment, invoice: invoice_2)
 
     get "/api/v1/customers/#{customer.id}/transactions"
 
     expect(response).to be_success
 
     customer_payments = JSON.parse(response.body)
-    expect(customer_payments.count).to eq(5)
-    expect(customer_payments.all? { |pymnt| Invoice.find(pymnt['invoice_id']).customer_id == customer.id }).to be true
+    # byebug
+    expect(customer_payments.first["invoice_id"]).to eq(invoice_1.id)
+    expect(customer_payments.last["invoice_id"]).to eq(invoice_2.id)
   end
 end
