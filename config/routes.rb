@@ -14,7 +14,7 @@ Rails.application.routes.draw do
           collection do
             get '/find', to: 'payments/search#show'
             get '/find_all', to: 'payments/search#index'
-            get '/:id/invoices', to: 'payments/invoices#show'
+            # get '/:id/invoices', to: 'payments/invoices#show'
           end
         end
 
