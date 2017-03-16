@@ -48,6 +48,24 @@ describe "payments API" do
     expect(transaction_1["id"]).to eq(data_payment_1.id)
   end
 
+  it "can find a random transaction" do
+    data_merchants = Fabricate.times(50, :payment)
+
+    get '/api/v1/transactions/random'
+
+    expect(response).to be_success
+    transaction_1 = JSON.parse(response.body)
+    data_payment_2 = Payment.find(transaction_1["id"])
+
+    get '/api/v1/transactions/random'
+
+    expect(response).to be_success
+    transaction_2 = JSON.parse(response.body)
+    data_payment_2 = Payment.find(transaction_2["id"])
+
+    expect(transaction_1).to_not eq(transaction_2)
+  end
+
   xit "can find all payments by providing a date" do
     data_payment_1, data_payment_2 = Fabricate.times(2, :payment, credit_card_expiration_date: "2017-03-14")
 
