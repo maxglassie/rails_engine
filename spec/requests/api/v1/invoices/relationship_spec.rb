@@ -41,14 +41,32 @@ describe "Invoices relationship endpoint" do
     the_invoices_items = JSON.parse(response.body)
 
     expect(the_invoices_items.count).to eq(5)
-    expect(the_invoices_items.first.id).to
+    expect(the_invoices_items.first["id"]).to eq(items.first.id)
   end
 
   it "returns the associated customer" do
-    
+    customer = Fabricate(:customer)
+    invoice = Fabricate(:invoice, customer: customer)
+
+    get "/api/v1/invoices/#{invoice.id}/customer"
+
+    expect(response).to be_success
+
+    invoice_customer = JSON.parse(response.body)
+
+    expect(invoice_customer["id"]).to eq(invoice.customer_id)
   end
 
   it "returns the associated merchant" do
-    
+    merchant = Fabricate(:merchant)
+    invoice = Fabricate(:invoice, merchant: merchant)
+
+    get "/api/v1/invoices/#{invoice.id}/merchant"
+
+    expect(response).to be_success
+
+    invoice_merchant = JSON.parse(response.body)
+
+    expect(invoice_merchant["id"]).to eq(invoice.merchant_id)
   end
 end
