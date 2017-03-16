@@ -14,11 +14,7 @@ Rails.application.routes.draw do
           collection do
             get '/find', to: 'payments/search#show'
             get '/find_all', to: 'payments/search#index'
-<<<<<<< HEAD
             get '/random', to: 'payments/random#show'
-=======
-            # get '/:id/invoices', to: 'payments/invoices#show'
->>>>>>> master
           end
         end
 
@@ -35,6 +31,9 @@ Rails.application.routes.draw do
         get '/find', to: 'search#show'
         get '/find_all', to: 'search#index'
         get '/random', to: 'random#show'
+        get '/:id/transactions', to: 'payments#index'
+        get '/:id/invoice_items', to: "invoice_items#index"
+        get '/:id/items', to: "items#index"
       end
       resources :invoices, only: [:index, :show]
 
