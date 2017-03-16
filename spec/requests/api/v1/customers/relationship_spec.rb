@@ -12,8 +12,10 @@ describe "Customer Relationship Endpoint" do
     customer_invoices = JSON.parse(response.body)
 
     expect(customer_invoices.count).to eq(28)
-    expect(customer.id).to eq(invoices.first.customer_id)
-    expect(customer.id).to eq(invoices.last.customer_id)
+
+    expect(customer_invoices.all? {
+        |invoice_hash|
+        Invoice.find(invoice_hash["id"]).customer_id == customer.id}).to be true
   end
 
   it "returns a collection of associated payments for an specific customer" do
