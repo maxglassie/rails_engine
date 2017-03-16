@@ -5,6 +5,8 @@ Rails.application.routes.draw do
         get '/find', to: 'search#show'
         get '/find_all', to: 'search#index'
         get '/random', to: 'random#show'
+        get '/:id/items', to: 'items#index'
+        get '/:id/invoices', to: 'invoices#index'
       end
       resources :merchants, except: [:new, :edit]
 
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
           collection do
             get '/find', to: 'payments/search#show'
             get '/find_all', to: 'payments/search#index'
+            # get '/:id/invoices', to: 'payments/invoices#show'
           end
         end
 
@@ -19,6 +22,8 @@ Rails.application.routes.draw do
         get '/find', to: 'search#show'
         get '/find_all', to: 'search#index'
         get '/random', to: 'random#show'
+        get '/:id/invoices', to: 'invoices#index'
+        get '/:id/transactions', to: 'payments#index'
       end
       resources :customers, only: [:index, :show]
 
@@ -42,7 +47,6 @@ Rails.application.routes.draw do
         get '/random', to: 'random#show'
       end
       resources :invoice_items, only: [:index, :show]
-
       end
     end
   end
