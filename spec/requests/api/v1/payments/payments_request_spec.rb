@@ -35,5 +35,4 @@ describe "payments API" do
 
     expect(payment["id"]).to eq(data_payment.id)
   end
-
 end
