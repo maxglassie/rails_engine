@@ -36,18 +36,6 @@ describe "payments API" do
     expect(payment["id"]).to eq(data_payment.id)
   end
 
-  it "finds a payment by its id" do
-    data_payment = Fabricate(:payment)
-
-    get "/api/v1/transactions/find?id=#{data_payment.id}"
-
-    expect(response).to be_success
-
-    payment = JSON.parse(response.body)
-
-    expect(payment["id"]).to eq(data_payment.id)
-  end
-
   it "can find all payments by providing an invoice_id" do
     data_payment_1, data_payment_2 = Fabricate.times(2, :payment)
 
@@ -71,5 +59,4 @@ describe "payments API" do
 
     expect(transaction_1["credit_card_expiration_date"]).to eq(data_payment_1.credit_card_expiration_date)
   end
-
 end
