@@ -14,11 +14,7 @@ Rails.application.routes.draw do
           collection do
             get '/find', to: 'payments/search#show'
             get '/find_all', to: 'payments/search#index'
-<<<<<<< HEAD
             get '/random', to: 'payments/random#show'
-=======
-            # get '/:id/invoices', to: 'payments/invoices#show'
->>>>>>> master
           end
         end
 
