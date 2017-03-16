@@ -133,11 +133,20 @@ describe "customers API" do
   end
 
   it "can find a random customer" do
-    merchants = Fabricate.times(10, :merchant)
+    data_customers = Fabricate.times(50, :customer)
 
     get '/api/v1/customers/random'
 
     expect(response).to be_success
+    customer_1 = JSON.parse(response.body)
+    data_customer_2 = Customer.find(customer_1["id"])
 
+    get '/api/v1/customers/random'
+
+    expect(response).to be_success
+    customer_2 = JSON.parse(response.body)
+    data_customer_2 = Customer.find(customer_2["id"])
+
+    expect(customer_1).to_not eq(customer_2)
   end
 end
