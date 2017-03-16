@@ -9,5 +9,5 @@ class Api::V1::Payments::SearchController < ApplicationController
   def payment_params
     params.permit(:id, :invoice_id, :credit_card_number, :result)
   end
-  
+
 end

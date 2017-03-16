@@ -36,4 +36,16 @@ describe "payments API" do
     expect(payment["id"]).to eq(data_payment.id)
   end
 
+    it "finds a payment by its id" do
+    data_payment = Fabricate(:payment)
+
+    get "/api/v1/transactions/find?id=#{data_payment.id}"
+
+    expect(response).to be_success
+
+    payment = JSON.parse(response.body)
+
+    expect(payment["id"]).to eq(data_payment.id)
+  end
+
 end

@@ -63,7 +63,19 @@ describe "Invoices API" do
   it "can search an invoice by provided status" do
     data_invoice = Fabricate(:invoice)
 
-    get "/api/v1/invoices/find?status#{data_invoice.status}"
+    get "/api/v1/invoices/find?status=#{data_invoice.status}"
+
+    expect(response).to be_success
+
+    invoice = JSON.parse(response.body)
+
+    expect(invoice["status"]).to eq(data_invoice.status)
+  end
+
+  it "can search an invoice by provided status, case insensitive" do
+    data_invoice = Fabricate(:invoice, status: "shipped")
+
+    get "/api/v1/invoices/find?status=SHIpped"
 
     expect(response).to be_success
 
