@@ -111,4 +111,54 @@ describe "InvoiceItems API" do
 
     expect(invoice_item["updated_at"]).to eq(data_invoice_item.updated_at)
   end
+
+  it "can find all invoice items by item id" do
+    item = Fabricate(:item)
+    data_invoice_item_1, data_invoice_item_2 = Fabricate.times(2, :invoice_item, item_id: item.id)
+
+    get "/api/v1/invoice_items/find_all?item_id=#{data_invoice_item_1.item_id}"
+
+    expect(response).to be_success
+
+    invoice_item_1 = JSON.parse(response.body).first
+
+    expect(invoice_item_1["item_id"]).to eq(data_invoice_item_1.item_id)
+  end
+
+  it "can find all invoice items by invoice id" do
+    invoice = Fabricate(:invoice)
+    data_invoice_item_1, data_invoice_item_2 = Fabricate.times(2, :invoice_item, invoice_id: invoice.id)
+
+    get "/api/v1/invoice_items/find_all?invoice_id=#{data_invoice_item_1.invoice_id}"
+
+    expect(response).to be_success
+
+    invoice_item_1 = JSON.parse(response.body).first
+
+    expect(invoice_item_1["invoice_id"]).to eq(data_invoice_item_1.invoice_id)
+  end
+
+  it "can find all invoice items by quantity" do
+    data_invoice_item_1, data_invoice_item_2 = Fabricate.times(2, :invoice_item)
+
+    get "/api/v1/invoice_items/find_all?quantity=#{data_invoice_item_1.quantity}"
+
+    expect(response).to be_success
+
+    invoice_item_1 = JSON.parse(response.body).first
+
+    expect(invoice_item_1["quantity"]).to eq(data_invoice_item_1.quantity)
+  end
+
+  it "can find all invoice items by unit price" do
+    data_invoice_item_1, data_invoice_item_2 = Fabricate.times(2, :invoice_item)
+
+    get "/api/v1/invoice_items/find_all?unit_price=#{data_invoice_item_1.unit_price}"
+
+    expect(response).to be_success
+
+    invoice_item_1 = JSON.parse(response.body).first
+
+    expect(invoice_item_1["unit_price"]).to eq(data_invoice_item_1.unit_price)
+  end
 end

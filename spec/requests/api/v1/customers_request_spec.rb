@@ -83,4 +83,37 @@ describe "customers API" do
 
     expect(customer["updated_at"]).to eq(data_customer.updated_at)
   end
+
+  it "can find all customers by provided first name" do
+    data_customer_1, data_customer_2 = Fabricate.times(2, :customer)
+
+    get "/api/v1/customers/find_all?first_name=#{data_customer_1.first_name}"
+
+    expect(response).to be_success
+
+    customer_1 = JSON.parse(response.body).first
+
+    expect(customer_1["first_name"]).to eq(data_customer_1.first_name)
+  end
+
+  it "can find all customers by provided last name" do
+    data_customer_1, data_customer_2 = Fabricate.times(2, :customer)
+
+    get "/api/v1/customers/find_all?last_name=#{data_customer_1.last_name}"
+
+    expect(response).to be_success
+
+    customer_1 = JSON.parse(response.body).first
+
+    expect(customer_1["last_name"]).to eq(data_customer_1.last_name)
+  end
+
+  it "can find a random customer" do
+    merchants = Fabricate.times(10, :merchant)
+
+    get '/api/v1/customers/random'
+
+    expect(response).to be_success
+
+  end
 end
