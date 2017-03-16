@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
       resources :payments, path: 'transactions', only: [:index, :show, :create] do
           collection do
-            get '/find', to: 'payments/search#show', as: 'transactions'
+            get '/find', to: 'payments/search#show'
+            get '/find_all', to: 'payments/search#index'
           end
         end
 

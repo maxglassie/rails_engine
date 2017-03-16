@@ -1,5 +1,9 @@
 class Api::V1::Payments::SearchController < ApplicationController
 
+  def index
+    render json: Payment.where(payment_params)
+  end
+
   def show
     render json: Payment.find_by(payment_params)
   end
