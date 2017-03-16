@@ -32,18 +32,3 @@ describe "Items Relationship Endpoint" do
     expect(merchant.name).to eq(item.merchant.name)
   end
 end
-
-#   it "returns a collection of associated payments for an specific customer" do
-#     customer = Fabricate(:customer)
-#     invoice = Fabricate(:invoice, customer: customer)
-#     payments = Fabricate.times(5, :payment, invoice: invoice )
-#
-#     get "/api/v1/customers/#{customer.id}/transactions"
-#
-#     expect(response).to be_success
-#
-#     customer_payments = JSON.parse(response.body)
-#     expect(customer_payments.count).to eq(5)
-#     expect(customer_payments.all? { |pymnt| Invoice.find(pymnt['invoice_id']).customer_id == customer.id }).to be true
-#   end
-# end
