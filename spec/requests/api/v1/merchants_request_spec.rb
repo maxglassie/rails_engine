@@ -72,4 +72,16 @@ describe "merchants API" do
 
     expect(merchant["name"]).to eq("#{data_merchant.name}")
   end
+
+  it "can find all customers by providing name" do
+    data_merchant_1, data_merchant_2 = Fabricate.times(2, :merchant)
+
+    get "/api/v1/merchants/find_all?name=#{data_merchant_1.name}"
+
+    expect(response).to be_success
+
+    merchant_1 = JSON.parse(response.body).first
+
+    expect(merchant_1["name"]).to eq(data_merchant_1.name)
+  end
 end
