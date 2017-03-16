@@ -48,6 +48,18 @@ describe "customers API" do
     expect(customer["first_name"]).to eq(data_customer.first_name)
   end
 
+    it "can search a customer by its first name, case insensitive" do
+    data_customer = Fabricate(:customer, first_name: "Sweet Sauce")
+
+    get "/api/v1/customers/find?first_name=sweet SAUCE"
+
+    expect(response).to be_success
+
+    customer = JSON.parse(response.body)
+
+    expect(customer["first_name"]).to eq("Sweet Sauce")
+  end
+
   it "can search a customer by its last name" do
     data_customer = Fabricate(:customer)
 
@@ -58,6 +70,18 @@ describe "customers API" do
     customer = JSON.parse(response.body)
 
     expect(customer["last_name"]).to eq(data_customer.last_name)
+  end
+
+  it "can search a customer by its last name, case insensitive" do
+    data_customer = Fabricate(:customer, last_name: "Sweet Sauce")
+
+    get "/api/v1/customers/find?last_name=sweet SAUCE"
+
+    expect(response).to be_success
+
+    customer = JSON.parse(response.body)
+
+    expect(customer["last_name"]).to eq("Sweet Sauce")
   end
 
   xit "can search a customer by the date it was created at" do
