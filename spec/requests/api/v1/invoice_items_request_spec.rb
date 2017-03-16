@@ -161,4 +161,22 @@ describe "InvoiceItems API" do
 
     expect(invoice_item_1["unit_price"]).to eq(data_invoice_item_1.unit_price)
   end
+
+  it "can find a random invoice item" do
+    data_invoice_items = Fabricate.times(50, :invoice_item)
+
+    get '/api/v1/invoice_items/random'
+
+    expect(response).to be_success
+    invoice_item_1 = JSON.parse(response.body)
+    data_invoice_item_2 = InvoiceItem.find(invoice_item_1["id"])
+
+    get '/api/v1/invoice_items/random'
+
+    expect(response).to be_success
+    invoice_item_2 = JSON.parse(response.body)
+    data_invoice_item_2 = InvoiceItem.find(invoice_item_2["id"])
+
+    expect(invoice_item_1).to_not eq(invoice_item_2)
+  end
 end

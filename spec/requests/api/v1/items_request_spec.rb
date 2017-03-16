@@ -175,4 +175,22 @@ describe "Items API" do
 
     expect(item_1["merchant_id"]).to eq(data_item_1.merchant_id)
   end
+
+  it "can find a random item" do
+    data_items = Fabricate.times(50, :item)
+
+    get '/api/v1/items/random'
+
+    expect(response).to be_success
+    item_1 = JSON.parse(response.body)
+    data_item_2 = Item.find(item_1["id"])
+
+    get '/api/v1/items/random'
+
+    expect(response).to be_success
+    item_2 = JSON.parse(response.body)
+    data_item_2 = Item.find(item_2["id"])
+
+    expect(item_1).to_not eq(item_2)
+  end
 end
