@@ -84,8 +84,8 @@ describe "Invoices API" do
     expect(invoice["status"]).to eq(data_invoice.status)
   end
 
-  xit "can search an invoice by the date it was created at" do
-    data_invoice = Fabricate(:invoice)
+  it "can search an invoice by the date it was created at" do
+    data_invoice = Fabricate(:invoice, created_at: "2017-03-16 23:58:29")
 
     get "/api/v1/invoices/find?created_at=#{data_invoice.created_at}"
 
@@ -93,11 +93,11 @@ describe "Invoices API" do
 
     invoice = JSON.parse(response.body)
 
-    expect(invoice["created_at"]).to eq(data_invoice.created_at)
+    expect(invoice["id"]).to eq(data_invoice.id)
   end
 
-  xit "can search an invoice by the date it was updated at" do
-    data_invoice = Fabricate(:invoice)
+  it "can search an invoice by the date it was updated at" do
+    data_invoice = Fabricate(:invoice, updated_at: "2017-03-16 23:58:29")
 
     get "/api/v1/invoices/find?updated_at=#{data_invoice.updated_at}"
 
@@ -105,7 +105,7 @@ describe "Invoices API" do
 
     invoice = JSON.parse(response.body)
 
-    expect(invoice["updated_at"]).to eq(data_invoice.updated_at)
+    expect(invoice["id"]).to eq(data_invoice.id)
   end
 
   it "can find all invoices by id" do

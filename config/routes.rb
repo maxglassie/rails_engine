@@ -15,6 +15,7 @@ Rails.application.routes.draw do
             get '/find', to: 'payments/search#show'
             get '/find_all', to: 'payments/search#index'
             get '/random', to: 'payments/random#show'
+            get '/:id/invoice', to: 'payments/invoice#show'
           end
         end
 

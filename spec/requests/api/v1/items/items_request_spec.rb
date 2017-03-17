@@ -60,7 +60,7 @@ describe "Items API" do
     expect(response).to be_success
 
     item = JSON.parse(response.body)
-    
+
     expect(response).to be_success
     expect(item["description"]).to eq(data_item.description)
   end
@@ -91,8 +91,8 @@ describe "Items API" do
     expect(item["merchant_id"]).to eq(data_item.merchant_id)
   end
 
-  xit "can search an item by the date it was created at" do
-    data_item = Fabricate(:item)
+  it "can search an item by the date it was created at" do
+    data_item = Fabricate(:item, created_at: "2017-03-16 23:58:29")
 
     get "/api/v1/items/find?created_at=#{data_item.created_at}"
 
@@ -100,11 +100,11 @@ describe "Items API" do
 
     item = JSON.parse(response.body)
 
-    expect(item["created_at"]).to eq(data_item.created_at)
+    expect(item["id"]).to eq(data_item.id)
   end
 
-  xit "can search an item by the date it was updated at" do
-    data_item = Fabricate(:item)
+  it "can search an item by the date it was updated at" do
+    data_item = Fabricate(:item, updated_at: "2017-03-16 23:58:29")
 
     get "/api/v1/items/find?updated_at=#{data_item.updated_at}"
 
@@ -112,7 +112,7 @@ describe "Items API" do
 
     item = JSON.parse(response.body)
 
-    expect(item["updated_at"]).to eq(data_item.updated_at)
+    expect(item["id"]).to eq(data_item.id)
   end
 
   it "can find all items by name" do
@@ -148,7 +148,7 @@ describe "Items API" do
 
     item_1 = JSON.parse(response.body).first
 
-    expect(item_1["description"]).to eq(data_item_1.description)
+    expect(item_1["id"]).to eq(data_item_1.id)
   end
 
   it "can find all items by unit price" do

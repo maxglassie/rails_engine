@@ -30,7 +30,7 @@ describe "Customer Relationship Endpoint" do
     expect(response).to be_success
 
     customer_payments = JSON.parse(response.body)
-    # byebug
+
     expect(customer_payments.first["invoice_id"]).to eq(invoice_1.id)
     expect(customer_payments.last["invoice_id"]).to eq(invoice_2.id)
   end
