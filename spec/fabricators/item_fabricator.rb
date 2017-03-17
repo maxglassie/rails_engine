@@ -1,6 +1,6 @@
 Fabricator(:item) do
   name { Faker::Lorem.word }
   description "Sunshine and whiskey"
-  unit_price { Faker::Number.number(5) }
+  unit_price "50.55"
   merchant
 end

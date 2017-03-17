@@ -85,7 +85,7 @@ describe "InvoiceItems API" do
     invoice_item = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(invoice_item["unit_price"]).to eq(data_invoice_item.unit_price)
+    expect(invoice_item["unit_price"]).to eq((data_invoice_item.unit_price).to_s)
   end
 
   it "it can search an invoice item by the date it was created at" do
@@ -159,7 +159,7 @@ describe "InvoiceItems API" do
 
     invoice_item_1 = JSON.parse(response.body).first
 
-    expect(invoice_item_1["unit_price"]).to eq(data_invoice_item_1.unit_price)
+    expect(invoice_item_1["unit_price"]).to eq((data_invoice_item_1.unit_price).to_s)
   end
 
   it "can find a random invoice item" do
