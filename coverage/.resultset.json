@@ -1597,6 +1597,19 @@
         null,
         1,
         1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
         null,
         1,
         null,
@@ -1621,6 +1634,20 @@
         1,
         1,
         1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
         null,
         1,
         null,
@@ -1646,8 +1673,8 @@
       ],
       "/Users/edilene/1611/module_3/projects/rails_engine/spec/fabricators/customer_fabricator.rb": [
         1,
-        315,
-        315,
+        323,
+        323,
         null
       ],
       "/Users/edilene/1611/module_3/projects/rails_engine/spec/fabricators/invoice_fabricator.rb": [
@@ -1668,22 +1695,22 @@
       "/Users/edilene/1611/module_3/projects/rails_engine/spec/fabricators/item_fabricator.rb": [
         1,
         176,
-        176,
+        2,
         176,
         2,
         null
       ],
       "/Users/edilene/1611/module_3/projects/rails_engine/spec/fabricators/merchant_fabricator.rb": [
         1,
-        471,
+        479,
         null
       ],
       "/Users/edilene/1611/module_3/projects/rails_engine/spec/fabricators/payment_fabricator.rb": [
         1,
         2,
-        63,
-        63,
-        63,
+        71,
+        71,
+        71,
         null
       ],
       "/Users/edilene/1611/module_3/projects/rails_engine/app/controllers/api/v1/customers_controller.rb": [
@@ -2057,17 +2084,17 @@
         1,
         null,
         1,
-        1,
+        2,
         null,
-        null,
-        1,
-        1,
-        null,
-        null,
-        1,
         null,
         1,
         2,
+        null,
+        null,
+        1,
+        null,
+        1,
+        4,
         null,
         null,
         null
@@ -2088,6 +2115,6 @@
         null
       ]
     },
-    "timestamp": 1489710914
+    "timestamp": 1489718094
   }
 }

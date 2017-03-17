@@ -36,6 +36,19 @@ describe "payments API" do
     expect(payment["id"]).to eq(data_payment.id)
   end
 
+  it "can find first instance by created_at" do
+    invoice = Fabricate(:invoice)
+    data_payment = Fabricate(:payment, created_at: "2012-03-27T14:54:05.000Z", invoice: invoice)
+
+    get "/api/v1/transactions/find?created_at=2012-03-27T14:54:05.000Z"
+
+    expect(response).to be_success
+
+    payment = JSON.parse(response.body)
+
+    expect(data_payment.id).to eq(payment["id"])
+  end
+
   it "can find all payments by providing an invoice_id" do
     data_payment_1, data_payment_2 = Fabricate.times(2, :payment)
 
@@ -64,5 +77,17 @@ describe "payments API" do
     data_payment_2 = Payment.find(transaction_2["id"])
 
     expect(transaction_1).to_not eq(transaction_2)
+  end
+
+  it "can find all instances by updated at" do
+    data_payments = Fabricate.times(7, :payment, updated_at: "2012-03-27T14:56:42.000Z9")
+
+    get "/api/v1/transactions/find_all?updated_at=2012-03-27T14:56:42.000Z"
+
+    expect(response).to be_success
+
+    transactions = JSON.parse(response.body)
+
+    expect(transactions.count).to eq(7)
   end
 end

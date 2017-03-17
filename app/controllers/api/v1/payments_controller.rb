@@ -14,6 +14,6 @@ class Api::V1::PaymentsController < ApplicationController
   private
 
   def payment_params
-    params.require(:payment).permit(:invoice_id, :credit_card_number, :credit_card_expiration_date, :result)
+    params.require(:payment).permit(:invoice_id, :credit_card_number, :credit_card_expiration_date, :result, :created_at, :updated_at)
   end
 end
