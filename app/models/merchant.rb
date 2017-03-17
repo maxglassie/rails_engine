@@ -46,14 +46,15 @@ class Merchant < ApplicationRecord
       ActiveRecord::Base.connection.execute(query)
   end
 
-  def self.date
+  def self.date(date)
+    closing_date = date.
      query = "
      SELECT m.name, p.created_at, sum(it.quantity * unit_price) as revenue
      FROM merchants m
-    INNER JOIN invoices i on m.id = i.merchant_id
+     INNER JOIN invoices i on m.id = i.merchant_id
     INNER JOIN payments p on p.invoice_id = i.id
     INNER JOIN invoice_items it on i.id = it.invoice_id
-    where p.created_at between to_date('2012-03-27', 'YYYY-MM-DD')
+    where p.created_at between to_date('#{date}', 'YYYY-MM-DD')
       and to_date('2012-03-28','YYYY-MM-DD')
     GROUP BY m.name, p.created_at;"
 

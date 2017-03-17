@@ -9,7 +9,7 @@ class Api::V1::Merchants::RevenueController < ApplicationController
   end
 
   def date
-    render json: Merchant.date(merchant_date["quantity"])
+    render json: Merchant.date(merchant_date["date"])
   end
 
   private

@@ -49,21 +49,23 @@ RSpec.describe "all merchants business intelligence endpoints" do
     expect(top_merchants.last["id"]).to_not eq(merchant_3.id)
   end
 
-  it "returns total revenue for date across all merchants" do
+  xit "returns total revenue for date across all merchants" do
     merchant_1 = Fabricate(:merchant)
-    payments = Fabricate(:payment, created_at: '2012-03-27 00:00:00')
-    invoice_1 = Fabricate(:invoice, merchant: merchant_1)
+    payment_1 = Fabricate(:payment, created_at: '2012-03-27 00:00:00')
+    invoice_1 = Fabricate(:invoice, merchant: merchant_1, payment: payment_1)
     invoice_items_1 = Fabricate(:invoice_item, invoice: invoice_1, quantity: 3, unit_price: 90)
 
     merchant_2 = Fabricate(:merchant)
-    invoice_2 = Fabricate(:invoice, merchant: merchant_2)
+    payment_2 = Fabricate(:payment, created_at: '2012-03-27 00:00:00')
+    invoice_2 = Fabricate(:invoice, merchant: merchant_2, payment: payment_2)
     invoice_items_2 = Fabricate(:invoice_item, invoice: invoice_2, quantity: 2, unit_price: 60)
 
     merchant_3 = Fabricate(:merchant)
-    invoice_3 = Fabricate(:invoice, merchant: merchant_3)
+    payment_3 = Fabricate(:payment, created_at: '2017-03-26 00:00:00')
+    invoice_3 = Fabricate(:invoice, merchant: merchant_3, payment: payment_3)
     invoice_items_3 = Fabricate(:invoice_item, invoice: invoice_3, quantity: 1, unit_price: 30)
 
-    get "/api/v1/merchants/revenue?date=2"
+    get "/api/v1/merchants/revenue?date=2012-03-27 00:00:00"
 
     top_merchants = JSON.parse(response.body)
 
