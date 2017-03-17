@@ -36,6 +36,19 @@ describe "payments API" do
     expect(payment["id"]).to eq(data_payment.id)
   end
 
+  it "can find first instance by created_at" do
+    invoice = Fabricate(:invoice)
+    data_payment = Fabricate(:payment, created_at: "2012-03-27T14:54:05.000Z", invoice: invoice)
+
+    get "/api/v1/transactions/find?created_at=2012-03-27T14:54:05.000Z"
+
+    expect(response).to be_success
+
+    payment = JSON.parse(response.body)
+
+    expect(data_payment.id).to eq(payment["id"])
+  end
+
   it "can find all payments by providing an invoice_id" do
     data_payment_1, data_payment_2 = Fabricate.times(2, :payment)
 
@@ -66,15 +79,15 @@ describe "payments API" do
     expect(transaction_1).to_not eq(transaction_2)
   end
 
-  xit "can find all payments by providing a date" do
-    data_payment_1, data_payment_2 = Fabricate.times(2, :payment, credit_card_expiration_date: "2017-03-14")
+  it "can find all instances by updated at" do
+    data_payments = Fabricate.times(7, :payment, updated_at: "2012-03-27T14:56:42.000Z9")
 
-    get "/api/v1/transactions/find_all?credit_card_expiration_date=#{data_payment_1.credit_card_expiration_date}"
+    get "/api/v1/transactions/find_all?updated_at=2012-03-27T14:56:42.000Z"
 
     expect(response).to be_success
 
-    transaction_1 = JSON.parse(response.body).first
+    transactions = JSON.parse(response.body)
 
-    expect(transaction_1["credit_card_expiration_date"]).to eq(data_payment_1.credit_card_expiration_date)
+    expect(transactions.count).to eq(7)
   end
 end

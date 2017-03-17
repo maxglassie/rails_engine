@@ -119,6 +119,7 @@ GEM
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
+    rspec-json_expectations (2.1.0)
     rspec-mocks (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
@@ -138,6 +139,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+
     slop (3.6.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
@@ -167,6 +169,7 @@ DEPENDENCIES
   pry
   puma (~> 3.0)
   rails (~> 5.0.2)
+  rspec-json_expectations
   rspec-rails (~> 3.5)
   shoulda-matchers (~> 3.1)
   simplecov

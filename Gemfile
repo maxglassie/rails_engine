@@ -37,6 +37,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'fabrication'
   gem 'faker'
+  gem 'rspec-json_expectations'
 end
 
 group :development do

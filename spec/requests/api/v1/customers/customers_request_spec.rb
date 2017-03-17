@@ -84,20 +84,19 @@ describe "customers API" do
     expect(customer["last_name"]).to eq("Sweet Sauce")
   end
 
-  xit "can search a customer by the date it was created at" do
-    data_customer = Fabricate(:customer)
+  it "can search a customer by the date it was created at" do
+    data_customer = Fabricate(:customer, created_at: "2017-03-16 23:58:29")
 
     get "/api/v1/customers/find?created_at=#{data_customer.created_at}"
-
     expect(response).to be_success
 
     customer = JSON.parse(response.body)
 
-    expect(customer["created_at"]).to eq(data_customer.created_at)
+    expect(customer["id"]).to eq(data_customer.id)
   end
 
-  xit "can search a customer by the date it was updated at" do
-    data_customer = Fabricate(:customer)
+  it "can search a customer by the date it was updated at" do
+    data_customer = Fabricate(:customer, updated_at: "2017-03-16 23:58:29")
 
     get "/api/v1/customers/find?updated_at=#{data_customer.updated_at}"
 
@@ -105,7 +104,7 @@ describe "customers API" do
 
     customer = JSON.parse(response.body)
 
-    expect(customer["updated_at"]).to eq(data_customer.updated_at)
+    expect(customer["id"]).to eq(data_customer.id)
   end
 
   it "can find all customers by provided first name" do
