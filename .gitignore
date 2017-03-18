@@ -13,7 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 
-/app/coverage
+coverage
 
 # Ignore Byebug command history file.
 .byebug_history
