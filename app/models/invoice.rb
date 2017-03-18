@@ -1,5 +1,5 @@
 class Invoice < ApplicationRecord
-  has_one :payment
+  has_many :payments
   belongs_to :customer
   belongs_to :merchant
   has_many :invoice_items
