@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe "Payment Relationship Endpoints" do
   it "returns the associated invoice" do
-    payment = Fabricate(:payment)
-    invoice = Fabricate(:invoice, payment: payment)
+    invoice = Fabricate(:invoice)
+    payment = Fabricate(:payment, invoice: invoice)
 
     get "/api/v1/transactions/#{payment.id}/invoice"
 

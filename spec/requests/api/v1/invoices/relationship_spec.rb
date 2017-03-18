@@ -10,8 +10,8 @@ describe "Invoices relationship endpoint" do
     expect(response).to be_success
 
     invoice_transactions = JSON.parse(response.body)
-  
-    expect(invoice_transactions["invoice_id"]).to eq(transactions.invoice_id)
+
+    expect(invoice_transactions.first["invoice_id"]).to eq(transactions.invoice_id)
   end
 
   it "returns a collection of associated invoice_items" do
