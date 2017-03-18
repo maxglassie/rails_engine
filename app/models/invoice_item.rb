@@ -1,7 +1,7 @@
 class InvoiceItem < ApplicationRecord
   belongs_to :item
   belongs_to :invoice
-  has_one :payment, through: :invoice
+  has_many :payments, through: :invoice
   has_one :customer, through: :invoice
   has_one :merchant, through: :invoice
 

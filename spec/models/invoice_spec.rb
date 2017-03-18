@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Invoice, type: :model do
   context "relationships" do
-    it { should have_one(:payment)  }
+    it { should have_many(:payments)  }
     it { should belong_to(:customer)     }
     it { should belong_to(:merchant)     }
     it { should have_many(:invoice_items)}
