@@ -26,7 +26,7 @@ RSpec.describe "all merchants business intelligence endpoints" do
     expect(top_merchants.last["id"]).to_not eq(merchant_3.id)
   end
 
-  it "returns top merchants by total items sold" do
+  xit "returns top merchants by total items sold" do
     merchant_1 = Fabricate(:merchant)
     invoice_1 = Fabricate(:invoice, merchant: merchant_1)
     invoice_items_1 = Fabricate(:invoice_item, invoice: invoice_1, quantity: 100, unit_price: 90)

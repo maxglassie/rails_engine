@@ -486,8 +486,8 @@
         null,
         null,
         1,
-        1,
-        1,
+        0,
+        0,
         null,
         null,
         null,
@@ -495,7 +495,7 @@
         null,
         null,
         null,
-        1,
+        0,
         null,
         null,
         1,
@@ -1477,24 +1477,24 @@
         null,
         null,
         1,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
         null,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
         null,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
         null,
-        1,
+        0,
         null,
-        1,
+        0,
         null,
-        1,
-        1,
+        0,
+        0,
         0,
         null,
         null,
@@ -1789,8 +1789,8 @@
       ],
       "/Users/maxglassie/turing/3module/projects/rails_engine/spec/fabricators/customer_fabricator.rb": [
         1,
-        328,
-        328,
+        325,
+        325,
         null
       ],
       "/Users/maxglassie/turing/3module/projects/rails_engine/spec/fabricators/invoice_fabricator.rb": [
@@ -1810,7 +1810,7 @@
       ],
       "/Users/maxglassie/turing/3module/projects/rails_engine/spec/fabricators/item_fabricator.rb": [
         1,
-        182,
+        179,
         2,
         2,
         2,
@@ -1818,7 +1818,7 @@
       ],
       "/Users/maxglassie/turing/3module/projects/rails_engine/spec/fabricators/merchant_fabricator.rb": [
         1,
-        490,
+        484,
         null
       ],
       "/Users/maxglassie/turing/3module/projects/rails_engine/spec/fabricators/payment_fabricator.rb": [
@@ -2112,7 +2112,7 @@
         null,
         null,
         1,
-        1,
+        0,
         null,
         null,
         1,
@@ -2122,7 +2122,7 @@
         1,
         null,
         1,
-        2,
+        1,
         null,
         null,
         1,
@@ -2261,6 +2261,6 @@
         null
       ]
     },
-    "timestamp": 1489889765
+    "timestamp": 1489889851
   }
 }
