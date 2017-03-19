@@ -1,3 +1,5 @@
 class MerchantRevenueSerializer < ActiveModel::Serializer
-  attributes :id, :name, :revenue
+  include ActionView::Helpers::NumberHelper
+
+  attributes :revenue
 end
