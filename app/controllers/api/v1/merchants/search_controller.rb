@@ -7,11 +7,6 @@ class Api::V1::Merchants::SearchController < ApplicationController
     render json: Merchant.find_by(merchant_params)
   end
 
-  def most_revenue
-    byebug
-    render json: Merchant.most_revenue(merchant_quantity["quantity"]), serializer: MerchantRevenueSerializer
-  end
-
   private
 
   def merchant_params

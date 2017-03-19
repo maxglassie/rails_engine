@@ -1,7 +1,7 @@
 class Api::V1::Merchants::RevenueController < ApplicationController
 
   def most_revenue
-    render json: Merchant.most_revenue(merchant_quantity["quantity"])
+    render json: Merchant.most_revenue(merchant_quantity["quantity"]) #, serializer: MerchantRevenueSerializer
   end
 
   def most_items
@@ -9,7 +9,7 @@ class Api::V1::Merchants::RevenueController < ApplicationController
   end
 
   def date
-    render json: Merchant.date(merchant_date["quantity"])
+    render json: Merchant.date(merchant_date["date"])
   end
 
   private
