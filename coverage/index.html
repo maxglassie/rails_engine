@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-03-18T19:25:51-06:00">2017-03-18T19:25:51-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-03-18T20:16:06-06:00">2017-03-18T20:16:06-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.7
+         2.69
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>86</b> files in total.
-    <b>1115</b> relevant lines. 
-    <span class="green"><b>1092</b> lines covered</span> and
+    <b>1116</b> relevant lines. 
+    <span class="green"><b>1093</b> lines covered</span> and
     <span class="red"><b>23</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -442,10 +442,10 @@
       
       <tr>
         <td class="strong"><a href="#61fe8322c0c99bf128888333789aaa893cb10960" class="src_link" title="app/models/merchant.rb">app/models/merchant.rb</a></td>
-        <td class="yellow strong">87.5 %</td>
-        <td>47</td>
-        <td>16</td>
-        <td>14</td>
+        <td class="yellow strong">88.24 %</td>
+        <td>48</td>
+        <td>17</td>
+        <td>15</td>
         <td>2</td>
         <td>0.9</td>
       </tr>
@@ -2749,7 +2749,7 @@
         <li class="missed" data-hits="0" data-linenumber="12">
           
           
-          <code class="ruby">    render json: Merchant.date(merchant_date[&quot;quantity&quot;])</code>
+          <code class="ruby">    render json: Merchant.date(merchant_date[&quot;date&quot;])</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
@@ -3881,10 +3881,10 @@
         <div class="source_table" id="61fe8322c0c99bf128888333789aaa893cb10960">
   <div class="header">
     <h3>app/models/merchant.rb</h3>
-    <h4><span class="yellow">87.5 %</span> covered</h4>
+    <h4><span class="yellow">88.24 %</span> covered</h4>
     <div>
-      <b>16</b> relevant lines. 
-      <span class="green"><b>14</b> lines covered</span> and
+      <b>17</b> relevant lines. 
+      <span class="green"><b>15</b> lines covered</span> and
       <span class="red"><b>2</b> lines missed.</span>
     </div>
   </div>
@@ -4027,148 +4027,154 @@
         <li class="covered" data-hits="1" data-linenumber="23">
           <span class="hits">1</span>
           
-          <code class="ruby">      query = &quot;SELECT m.id, m.name, count(it.item_id) as total_sales</code>
+          <code class="ruby">    number = quantity.to_i</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">        FROM merchants m</code>
+          <code class="ruby">      query = &quot;SELECT m.id, m.name, count(it.item_id) as total_sales</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
           
           
-          <code class="ruby">        INNER JOIN invoices i on m.id = i.merchant_id</code>
+          <code class="ruby">        FROM merchants m</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="26">
           
           
-          <code class="ruby">        INNER JOIN invoice_items it on i.id = it.invoice_id</code>
+          <code class="ruby">        INNER JOIN invoices i on m.id = i.merchant_id</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
           
           
-          <code class="ruby">        GROUP BY m.id, m.name</code>
+          <code class="ruby">        INNER JOIN invoice_items it on i.id = it.invoice_id</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="28">
           
           
-          <code class="ruby">        ORDER BY total_sales DESC</code>
+          <code class="ruby">        GROUP BY m.id, m.name</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="29">
           
           
-          <code class="ruby">        LIMIT #{quantity}&quot;</code>
+          <code class="ruby">        ORDER BY total_sales DESC</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
+          <code class="ruby">        LIMIT #{number}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="31">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="31">
+        <li class="covered" data-hits="1" data-linenumber="32">
           <span class="hits">1</span>
           
           <code class="ruby">      ActiveRecord::Base.connection.execute(query)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="32">
-          
-          
-          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="34">
+        <li class="covered" data-hits="1" data-linenumber="35">
           <span class="hits">1</span>
           
           <code class="ruby">  def self.date(date)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="35">
+        <li class="missed" data-hits="0" data-linenumber="36">
           
           
           <code class="ruby">     query = &quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="37">
           
           
           <code class="ruby">        SELECT m.name, i.created_at, sum(it.quantity * unit_price) as revenue</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="37">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby">        FROM merchants m</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="38">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
           <code class="ruby">        INNER JOIN invoices i on m.id = i.merchant_id</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="39">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
           <code class="ruby">        INNER JOIN payments p on p.invoice_id = i.id</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby">        INNER JOIN invoice_items it on i.id = it.invoice_id</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="42">
           
           
           <code class="ruby">        where i.created_at = #{date}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="43">
           
           
           <code class="ruby">          and p.result = &#39;success&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="44">
           
           
           <code class="ruby">        GROUP BY m.name, i.created_at&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="45">
+        <li class="missed" data-hits="0" data-linenumber="46">
           
           
           <code class="ruby">      ActiveRecord::Base.connection.execute(query)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="46">
+        <li class="never" data-hits="" data-linenumber="47">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="never" data-hits="" data-linenumber="48">
           
           
           <code class="ruby">end</code>
@@ -13123,7 +13129,7 @@
         <li class="covered" data-hits="1" data-linenumber="32">
           <span class="hits">1</span>
           
-          <code class="ruby">    invoice_items_1 = Fabricate(:invoice_item, invoice: invoice_1, quantity: 3, unit_price: 90)</code>
+          <code class="ruby">    invoice_items_1 = Fabricate(:invoice_item, invoice: invoice_1, quantity: 100, unit_price: 90)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
@@ -13237,7 +13243,7 @@
         <li class="covered" data-hits="1" data-linenumber="51">
           <span class="hits">1</span>
           
-          <code class="ruby">  it &quot;returns total revenue for date across all merchants&quot; do</code>
+          <code class="ruby">  xit &quot;returns total revenue for date across all merchants&quot; do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="52">

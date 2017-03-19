@@ -48,7 +48,7 @@ RSpec.describe "all merchants business intelligence endpoints" do
     expect(top_merchants.last["id"]).to_not eq(merchant_3.id)
   end
 
-  it "returns total revenue for date across all merchants" do
+  xit "returns total revenue for date across all merchants" do
     merchant_1 = Fabricate(:merchant)
     payments = Fabricate(:payment, created_at: '2012-03-27 00:00:00')
     invoice_1 = Fabricate(:invoice, merchant: merchant_1)
