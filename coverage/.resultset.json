@@ -329,6 +329,7 @@
         1,
         1,
         1,
+        1,
         null,
         1,
         null,
@@ -452,6 +453,10 @@
         1,
         null,
         1,
+        null,
+        1,
+        1,
+        null,
         null,
         1,
         1,
@@ -1331,6 +1336,33 @@
         1,
         1,
         null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
         null
       ],
       "/Users/edilene/1611/module_3/projects/rails_engine/spec/requests/api/v1/items/items_request_spec.rb": [
@@ -1910,8 +1942,8 @@
       ],
       "/Users/edilene/1611/module_3/projects/rails_engine/spec/fabricators/customer_fabricator.rb": [
         1,
-        336,
-        336,
+        341,
+        341,
         null
       ],
       "/Users/edilene/1611/module_3/projects/rails_engine/spec/fabricators/invoice_fabricator.rb": [
@@ -1926,12 +1958,12 @@
         2,
         2,
         100,
-        105,
+        110,
         null
       ],
       "/Users/edilene/1611/module_3/projects/rails_engine/spec/fabricators/item_fabricator.rb": [
         1,
-        183,
+        184,
         2,
         2,
         2,
@@ -1939,14 +1971,14 @@
       ],
       "/Users/edilene/1611/module_3/projects/rails_engine/spec/fabricators/merchant_fabricator.rb": [
         1,
-        500,
+        506,
         null
       ],
       "/Users/edilene/1611/module_3/projects/rails_engine/spec/fabricators/payment_fabricator.rb": [
         1,
         2,
-        85,
-        85,
+        90,
+        90,
         71,
         null
       ],
@@ -2196,6 +2228,14 @@
         null,
         null
       ],
+      "/Users/edilene/1611/module_3/projects/rails_engine/app/controllers/api/v1/items/best_day_controller.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/edilene/1611/module_3/projects/rails_engine/app/controllers/api/v1/items_controller.rb": [
         1,
         1,
@@ -2409,6 +2449,6 @@
         null
       ]
     },
-    "timestamp": 1489884360
+    "timestamp": 1489889454
   }
 }
